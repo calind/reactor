@@ -1,0 +1,10 @@
+pipeline:
+  backend:
+    image: alpine
+    commands:
+      - sleep 20
+  frontend:
+    image: alpine
+    commands:
+      - sleep 30
+
