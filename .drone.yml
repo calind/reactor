@@ -1,13 +1,17 @@
 pipeline:
-  backend:
+  build:
     image: alpine
-    group: build
     commands:
-      - sleep 5
+      - env
+      - sleep 2
       - true
-  frontend:
+    when:
+      event: [push, pull_request]
+  deploy:
     image: alpine
-    group: build
     commands:
-      - sleep 10
-      - true
+      - env
+      - echo ${GH_TOKEN}
+    when:
+      event: [deployment]
+
